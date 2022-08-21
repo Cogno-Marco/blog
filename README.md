@@ -4,5 +4,5 @@ Expect posts about coding, lessons, rants, gamedev and in general technical cont
 
 # Table of content
 
->  ## [Complexity Notations for Programmers](/posts/big_o_omega_theta.md)
+>  ## [Complexity Notations for Programmers](posts/big_o_omega_theta.md)
 >   ###### Opening a black box on big O, Omega and Theta notations (2022/08/21)
