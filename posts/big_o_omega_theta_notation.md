@@ -17,11 +17,11 @@ There's a problem though. If you have two algorithms in the same class, then you
 The other two notations are very similar. Big O tells you the *worst* case. big Omega tells you the *best* case. And big Theta tells you *every* case.
 You don't need the average case because it's redundant. You can still say that "in the average case it will do *at most* this work", so you can use big O notation.
 
-## Big O notation
+## The Big O notation
 
 Let's start with the most important one.
 
-Using non-rigorous mathematical language, we say that a function $f(n) \in O(g(n))$ if $\exists c>0 $ and $k > 0$ such that $f(n) \leq c \cdot g(n) \forall n \geq k$.
+Using non-rigorous mathematical language, we say that a function $f(n) \in O(g(n))$ if $\exists c>0$ and $k > 0$ such that $f(n) \leq c \cdot g(n) \forall n \geq k$.
 
 What this is basically saying is "constants don't matter" and also "weaker functions don't matter".
 
