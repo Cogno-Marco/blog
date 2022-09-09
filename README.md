@@ -4,6 +4,10 @@ Expect posts about coding, lessons, rants, gamedev and in general technical cont
 
 # Table of content
 
+> ## [Does code rot?](/posts/does_code_rot.md)
+> ###### No but it gets obsolete (2022/09/09)
+
+
 > ## [Can we improve the for cycle?](/posts/best_for_cycle.md)
 > ###### What I'd like to see in future languages (2022/08/26)
 
