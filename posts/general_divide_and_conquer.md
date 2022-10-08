@@ -161,12 +161,13 @@ Again, $f^*(n,n_0)$ is used to calculate what's the final layer of non-trivial c
 In it's raw form:
 
 $$
-f^*(n, n_0) = max \left\{ k |f^{(k)}(n) > n_0 \right\}
+f^*(n, n_0) = max \left\\{ k |f^{(k)}(n) > n_0 \right\\}
 $$
 
 The final layer would be when $f^{(k)}(n) = n_0$, but we need the one before that. You'll see later why.
 
 Let's look at the same examples as before:
+
 $$
 \begin{matrix}
 f(n) = n-1 \\
@@ -191,9 +192,9 @@ f^{(k)}(n) = \frac n{a^k} \\
 \end{matrix} \\
 \begin{matrix}
 \begin{aligned} 
-f^*(n, n_0) &= max\left\{ k |f^{(k)}(n) > n_0 \right\} \\
-&= max\left\{ k | \frac n{a^k} > n_0 \right\} \\
-&= max\left\{ k | k < log_a \left( \frac n {n_0} \right) \right\} \\
+f^*(n, n_0) &= max\left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
+&= max\left\\{ k | \frac n{a^k} > n_0 \right\\} \\
+&= max\left\\{ k | k < log_a \left( \frac n {n_0} \right) \right\\} \\
 &= log_a \left( \frac n {n_0} \right) - 1
 \end{aligned}   
 \end{matrix}
