@@ -241,8 +241,8 @@ If you do this for each level and track everything into a table you get somethin
 |internal|1|$f(n)=f^{(1)}(n)$|$s(n)=s(f^{(0)}(n))$|$w(f(n))=w(f^{(1)}(n))$|
 |internal|2|$f^{(2)}(n)$|$s(n) \cdot s(f^{(2)}(n))$|$w(f^{(2)}(n))$|
 |...|...|...|...|...|
-|internal|$l \leq f^*(n,n_0)$|$f^{(l)}(n)$|$\prod_{j=0}^{l-1}s(f^{(j)}(n))$|$w(f^{(j)}(n))$|
-|leaf|$f^*(n,n_0)+1$|$\leq n_0$ |$\prod_{j=0}^{f^*(n,n_0)}s(f^{(j)}(n))$|$T_0$|
+|internal|$l \leq f^*(n,n_0)$|$f^{(l)}(n)$|$\prod_{j=0}^{l-1}s(f^{(j)}(n))\;$|$w(f^{(j)}(n))$|
+|leaf|$f^*(n,n_0)+1$|$\leq n_0$ |$\prod_{j=0}^{f^*(n,n_0)}s(f^{(j)}(n))\;$|$T_0$|
 
 Ok, now the final step.
 What's the total work of the algorithm?
@@ -372,6 +372,7 @@ L(n) &= \sum_{l=0}^{n-3} \left( \prod_{j=0}^{l-1} 2\right) = \sum_{l=0}^{n-3} 2^
 $$
 
 And putting $L(n)$ and $R(n)$ together
+
 $$
 T(n) = L(n) + R(n) = 2^{n-2} - 1 + 2^{n-2} = 2^{n-1} - 1 = \frac12 2^n - 1
 $$
