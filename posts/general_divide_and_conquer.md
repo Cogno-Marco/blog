@@ -74,6 +74,7 @@ Well I think it's time to change that.
 As I said, if you have the algorithm into its compact form you can immediately start to calculate the exact algorithm complexity. 
 
 Now that we know the compact form let's look at the algorithm once again:
+
 $$
 T(n) = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
 \left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
@@ -116,6 +117,7 @@ Where the first node is the first call at level 0, then as you go further down t
 
 
 In it's rawest form:
+
 $$
 f^{(x)}(n) = 
 \begin{cases}
@@ -124,7 +126,7 @@ f(f^{(x-1)}(n)) & x \gt 0
 \end{cases}
 $$
 
-or said another way:$f^{(x)}(n) = f(f(....f(n))$
+or said another way: $f^{(x)}(n) = f(f(....f(n))$
 
 Basically the iterate is "what do I get if I apply the function to itself x times?"
 
@@ -136,6 +138,7 @@ If we repeat x times we get $f^{(x)}(n) =n-x$
 
 Now a more complex example, say we have $f(n)=n/a$
 If we apply the function to itself x times we get
+
 $$
 \begin{matrix}
 f^{(0)}(n) = n \\
@@ -158,7 +161,7 @@ Again, $f^*(n,n_0)$ is used to calculate what's the final layer of non-trivial c
 In it's raw form:
 
 $$
-f^*(n, n_0) = max\left\{ k |f^{(k)}(n) > n_0 \right\}
+f^*(n, n_0) = max \left\{ k |f^{(k)}(n) > n_0 \right\}
 $$
 
 The final layer would be when $f^{(k)}(n) = n_0$, but we need the one before that. You'll see later why.
