@@ -175,9 +175,9 @@ f^{(k)}(n) = n-k \\
 \end{matrix} \\
 \begin{matrix}
 \begin{aligned} 
-f^*(n, n_0) &= max\left\{ k |f^{(k)}(n) > n_0 \right\} \\
-&= max\left\{ k | n-k > n_0 \right\} \\
-&= max\left\{ k | k < n - n_0 \right\} \\
+f^*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
+&= max \left\\{ k | n-k > n_0 \right\\} \\
+&= max \left\\{ k | k < n - n_0 \right\\} \\
 &= n - n_0 -1
 \end{aligned}   
 \end{matrix}
@@ -192,9 +192,9 @@ f^{(k)}(n) = \frac n{a^k} \\
 \end{matrix} \\
 \begin{matrix}
 \begin{aligned} 
-f^*(n, n_0) &= max\left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
-&= max\left\\{ k | \frac n{a^k} > n_0 \right\\} \\
-&= max\left\\{ k | k < log_a \left( \frac n {n_0} \right) \right\\} \\
+f^*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
+&= max \left\\{ k | \frac n{a^k} > n_0 \right\\} \\
+&= max \left\\{ k | k < log_a \left( \frac n {n_0} \right) \right\\} \\
 &= log_a \left( \frac n {n_0} \right) - 1
 \end{aligned}   
 \end{matrix}
@@ -203,10 +203,10 @@ $$
 Yes that $-1$ will pop up a lot.
 
 Look at what really happened. 
-If the size decreases by 1 each time ($f(n)=n-1$), how many layers does the call graph have until it reaches a final size of 1 ($n_0=1$)? It has $f^*(n,1)=n-1-1=n-2$ layers of internal nodes, which are non trivial instances of the problem, and a layer of trivial instances, or leaves.
+If the size decreases by 1 each time ( $f(n)=n-1$ ), how many layers does the call graph have until it reaches a final size of 1 ( $n_0=1$ )? It has $f^*(n,1)=n-1-1=n-2$ layers of internal nodes, which are non trivial instances of the problem, and a layer of trivial instances, or leaves.
 
-During merge sort the array halves each time ($f(n)=n/2$).
-You can easily merge 2 arrays of size 1 ($n_0=1$).
+During merge sort the array halves each time ( $f(n)=n/2$ ).
+You can easily merge 2 arrays of size 1 ( $n_0=1$ ).
 How many layers does the call graph have until a trivial array size?
 It has $f^*(n, 1) = log_2 (n) - 1$ non trivial layers of solutions to compute (arrays bigger than 1) and 1 layer of trivial solutions (array of size 1).
 
@@ -250,6 +250,7 @@ Well it's 2 parts: the work of every internal node + the work for each leaf node
 
 Let's start with the second since it's easier. Just look at the table, bottom row, last column. It's $T_0$.
 How many leaf nodes are there? It's that product in the second to last column.
+
 $$
 \text{work for leaf nodes} = T_0 \cdot \left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]
 $$
@@ -264,6 +265,7 @@ $$
 What's the work for *all* internal nodes?
 
 It's just the sum of work for nodes at each layer
+
 $$
 \text{work internal nodes} = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right)
 $$
@@ -307,6 +309,7 @@ Now let's calculate the work using the general formula.
 
 First: $f^{(j)}(n)$
 since $f(n) = n-1$ we've already calculated $f^{(j)}(n)$ before:
+
 $$
 \begin{matrix}
 f^{(0)}(n) = n \\
@@ -325,9 +328,9 @@ Second: $f^*(n,2)$
 $$
 \begin{matrix}
 \begin{aligned} 
-f^*(n, 2) &= max\left\{ k |f^{(k)}(n) > 2 \right\} \\
-&= max\left\{ k | n - k > 2\right\} \\
-&= max\left\{ k | k < n-2 \right\} \\
+f^*(n, 2) &= max\left\\{ k |f^{(k)}(n) > 2 \right\\} \\
+&= max \left\\{ k | n - k > 2\right\\} \\
+&= max \left\\{ k | k < n-2 \right\\} \\
 &= n-3
 \end{aligned}   
 \end{matrix}
