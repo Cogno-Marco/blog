@@ -11,8 +11,8 @@ It's not particularly useful since you can get basically the same result with bi
 Here it is, in all its majesty:
 
 $$
-T(n) = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
-\left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
+T(n) = \sum_{l=0}^{f^\*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
+\left[ \prod_{j=0}^{f^\*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
 $$
 
 This is called the "General Formula for Divide and Conquer Algorithms"
@@ -76,11 +76,11 @@ As I said, if you have the algorithm into its compact form you can immediately s
 Now that we know the compact form let's look at the algorithm once again:
 
 $$
-T(n) = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
-\left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
+T(n) = \sum_{l=0}^{f^\*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
+\left[ \prod_{j=0}^{f^\*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
 $$
 
-As you can see we have almost everything we need. We just need to calculate $f^{(j)}(n)$ and the $f^*(n,n_0)$.
+As you can see we have almost everything we need. We just need to calculate $f^{(j)}(n)$ and the $f^\*(n,n_0)$.
 This is exactly what we'll do in the next sections.
 
 ## Iterate Function
@@ -111,9 +111,9 @@ flowchart TD
     
     id16((0)) --> id17(( ))
     id17((...)) --> id18(( ))
-    id18((f*)) --> id19((f*+1))
+    id18((f\*)) --> id19((f\*+1))
 ```
-Where the first node is the first call at level 0, then as you go further down the size of the instances decreases by one contraction $f(n)$, meaning the function gets repeatedly applied to itself. That's what that $f^{(j)}(n)$ means. We also call the **penultimate** layer $f^*(n,n_0)$. The penultimate, not the last one. The last layer is the leaves of the graph, the last *internal* layer is the maximum number of times we can apply the contraction while staying with non-trivial instances of the problem.
+Where the first node is the first call at level 0, then as you go further down the size of the instances decreases by one contraction $f(n)$, meaning the function gets repeatedly applied to itself. That's what that $f^{(j)}(n)$ means. We also call the **penultimate** layer $f^\*(n,n_0)$. The penultimate, not the last one. The last layer is the leaves of the graph, the last *internal* layer is the maximum number of times we can apply the contraction while staying with non-trivial instances of the problem.
 
 
 In it's rawest form:
@@ -154,14 +154,14 @@ $$
 It should be intuitive why we're doing this right? The algorithm divides the input into smaller and smaller pieces, it shouldn't be a surprise that we need to do the same to know how complex is the algorithm. We're basically creating a formula for "at step x the array will have a size of $n/{2^x}$, so an array of size $n$ at step 2 will have a size of $n/2^2 = n/4$, at step 3 a size of $n/8$ and so on."
 
 ## Star Function
-Here we'll show how to calculate $f^*(n, n_0)$, which is called "f star".
+Here we'll show how to calculate $f^\*(n, n_0)$, which is called "f star".
 
-Again, $f^*(n,n_0)$ is used to calculate what's the final layer of non-trivial cases, which is **not** the final layer of the graph, since that's for trivial cases. It's the one before that.
+Again, $f^\*(n,n_0)$ is used to calculate what's the final layer of non-trivial cases, which is **not** the final layer of the graph, since that's for trivial cases. It's the one before that.
 
 In it's raw form:
 
 $$
-f^*(n, n_0) = max \left\\{ k |f^{(k)}(n) > n_0 \right\\}
+f^\*(n, n_0) = max \left\\{ k |f^{(k)}(n) > n_0 \right\\}
 $$
 
 The final layer would be when $f^{(k)}(n) = n_0$, but we need the one before that. You'll see later why.
@@ -175,7 +175,7 @@ f^{(k)}(n) = n-k \\
 \end{matrix} \\
 \begin{matrix}
 \begin{aligned} 
-f^*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
+f^\*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
 &= max \left\\{ k | n-k > n_0 \right\\} \\
 &= max \left\\{ k | k < n - n_0 \right\\} \\
 &= n - n_0 -1
@@ -192,7 +192,7 @@ f^{(k)}(n) = \frac n{a^k} \\
 \end{matrix} \\
 \begin{matrix}
 \begin{aligned} 
-f^*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
+f^\*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
 &= max \left\\{ k | \frac n{a^k} > n_0 \right\\} \\
 &= max \left\\{ k | k < log_a \left( \frac n {n_0} \right) \right\\} \\
 &= log_a \left( \frac n {n_0} \right) - 1
@@ -203,14 +203,14 @@ $$
 Yes that $-1$ will pop up a lot.
 
 Look at what really happened. 
-If the size decreases by 1 each time ( $f(n)=n-1$ ), how many layers does the call graph have until it reaches a final size of 1 ( $n_0=1$ )? It has $f^*(n,1)=n-1-1=n-2$ layers of internal nodes, which are non trivial instances of the problem, and a layer of trivial instances, or leaves.
+If the size decreases by 1 each time ( $f(n)=n-1$ ), how many layers does the call graph have until it reaches a final size of 1 ( $n_0=1$ )? It has $f^\*(n,1)=n-1-1=n-2$ layers of internal nodes, which are non trivial instances of the problem, and a layer of trivial instances, or leaves.
 
 During merge sort the array halves each time ( $f(n)=n/2$ ).
 You can easily merge 2 arrays of size 1 ( $n_0=1$ ).
 How many layers does the call graph have until a trivial array size?
-It has $f^*(n, 1) = log_2 (n) - 1$ non trivial layers of solutions to compute (arrays bigger than 1) and 1 layer of trivial solutions (array of size 1).
+It has $f^\*(n, 1) = log_2 (n) - 1$ non trivial layers of solutions to compute (arrays bigger than 1) and 1 layer of trivial solutions (array of size 1).
 
-Using the iterate of the contraction and $f^*$ you can know how many times you need to subdivide the instance of the problem into smaller ones. 
+Using the iterate of the contraction and $f^\*$ you can know how many times you need to subdivide the instance of the problem into smaller ones. 
 The only missing step is combining these informations with the work of each conquer step to arrive at the final total work of the algorithm.
 
 ## General Formula
@@ -241,8 +241,8 @@ If you do this for each level and track everything into a table you get somethin
 |internal|1|$f(n)=f^{(1)}(n)$|$s(n)=s(f^{(0)}(n))$|$w(f(n))=w(f^{(1)}(n))$|
 |internal|2|$f^{(2)}(n)$|$s(n) \cdot s(f^{(2)}(n))$|$w(f^{(2)}(n))$|
 |...|...|...|...|...|
-|internal|$l \leq f^*(n,n_0)$|$f^{(l)}(n)$|$\prod\nolimits_{j=0}^{l-1}s(f^{(j)}(n))$|$w(f^{(j)}(n))$|
-|leaf|$f^*(n,n_0)+1$|$\leq n_0$ |$\prod\nolimits_{j=0}^{f^*(n,n_0)}s(f^{(j)}(n))$|$T_0$|
+|internal|$l \leq f^\*(n,n_0)$|$f^{(l)}(n)$|$\prod\nolimits_{j=0}^{l-1}s(f^{(j)}(n))$|$w(f^{(j)}(n))$|
+|leaf|$f^\*(n,n_0)+1$|$\leq n_0$ |$\prod\nolimits_{j=0}^{f^\*(n,n_0)}s(f^{(j)}(n))$|$T_0$|
 
 Ok, now the final step.
 What's the total work of the algorithm?
@@ -252,7 +252,7 @@ Let's start with the second since it's easier. Just look at the table, bottom ro
 How many leaf nodes are there? It's that product in the second to last column.
 
 $$
-\text{work for leaf nodes} = T_0 \cdot \left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]
+\text{work for leaf nodes} = T_0 \cdot \left[ \prod_{j=0}^{f^\*(n,n_0)} s \left( f^{(j)}(n)\right) \right]
 $$
 
 Now what's the total work for each internal node at a single layer?
@@ -267,7 +267,7 @@ What's the work for *all* internal nodes?
 It's just the sum of work for nodes at each layer
 
 $$
-\text{work internal nodes} = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right)
+\text{work internal nodes} = \sum_{l=0}^{f^\*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right)
 $$
 
 And finally:
@@ -275,8 +275,8 @@ What's the work for the entire algorithm? It's the sum of the work for internal 
 The general formula:
 
 $$
-T(n) = \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
-\left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
+T(n) = \sum_{l=0}^{f^\*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
+\left[ \prod_{j=0}^{f^\*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0
 $$
 
 ## A big example
@@ -323,12 +323,12 @@ f^{(x)}(n) = n - x \\
 $$
 
 
-Second: $f^*(n,2)$
+Second: $f^\*(n,2)$
 
 $$
 \begin{matrix}
 \begin{aligned} 
-f^*(n, 2) &= max\left\\{ k |f^{(k)}(n) > 2 \right\\} \\
+f^\*(n, 2) &= max\left\\{ k |f^{(k)}(n) > 2 \right\\} \\
 &= max \left\\{ k | n - k > 2\right\\} \\
 &= max \left\\{ k | k < n-2 \right\\} \\
 &= n-3
@@ -341,8 +341,8 @@ And finally: the General Formula
 $$
 \begin{matrix}
 \begin{aligned} 
-T(n) &= \sum_{l=0}^{f^*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
-\left[ \prod_{j=0}^{f^*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0 \\
+T(n) &= \sum_{l=0}^{f^\*(n,n_0)} \left( \left[ \prod_{j=0}^{l-1} s \left( f^{(j)}(n)\right) \right] w \left( f^{(l)}(n) \right) \right) +
+\left[ \prod_{j=0}^{f^\*(n,n_0)} s \left( f^{(j)}(n)\right) \right]T^0 \\
 &= \sum_{l=0}^{n-3} \left( \left[ \prod_{j=0}^{l-1} 2 \right] 1\right) +
 \left[ \prod_{j=0}^{n-3} 2 \right]1
 \end{aligned}   
