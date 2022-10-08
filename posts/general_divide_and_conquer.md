@@ -172,8 +172,6 @@ $$
 \begin{matrix}
 f(n) = n-1 \\
 f^{(k)}(n) = n-k \\
-\end{matrix} \\
-\begin{matrix}
 \begin{aligned} 
 f^\*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
 &= max \left\\{ k | n-k > n_0 \right\\} \\
@@ -189,8 +187,6 @@ $$
 \begin{matrix}
 f(n) = \frac na \\
 f^{(k)}(n) = \frac n{a^k} \\
-\end{matrix} \\
-\begin{matrix}
 \begin{aligned} 
 f^\*(n, n_0) &= max \left\\{ k |f^{(k)}(n) > n_0 \right\\} \\
 &= max \left\\{ k | \frac n{a^k} > n_0 \right\\} \\
