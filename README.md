@@ -4,6 +4,10 @@ Expect posts about coding, lessons, rants, gamedev and in general technical cont
 
 # Table of content
 
+> ## [General Formula for Divide and Conquer Algorithms](/posts/general_divide_and_conquer.md)
+> ###### Opening a black box you didn't know you had (2022/10/08)
+
+
 > ## [Does code rot?](/posts/does_code_rot.md)
 > ###### No but it gets obsolete (2022/09/09)
 
