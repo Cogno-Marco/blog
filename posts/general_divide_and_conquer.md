@@ -111,7 +111,7 @@ flowchart TD
     
     id16((0)) --> id17(( ))
     id17((...)) --> id18(( ))
-    id18((f\*)) --> id19((f\*+1))
+    id18((f*)) --> id19((f*+1))
 ```
 Where the first node is the first call at level 0, then as you go further down the size of the instances decreases by one contraction $f(n)$, meaning the function gets repeatedly applied to itself. That's what that $f^{(j)}(n)$ means. We also call the **penultimate** layer $f^\*(n,n_0)$. The penultimate, not the last one. The last layer is the leaves of the graph, the last *internal* layer is the maximum number of times we can apply the contraction while staying with non-trivial instances of the problem.
 
