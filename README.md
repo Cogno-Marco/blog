@@ -4,6 +4,10 @@ Expect posts about coding, lessons, rants, gamedev and in general technical cont
 
 # Table of content
 
+> ## [Code Compression Law](/posts/code_compression_law.md)
+> ###### Why one-liners are a bad idea (2023/02/04)
+
+
 > ## [General Formula for Divide and Conquer Algorithms](/posts/general_divide_and_conquer.md)
 > ###### Opening a black box you didn't know you had (2022/10/08)
 
