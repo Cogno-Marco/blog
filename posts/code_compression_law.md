@@ -33,6 +33,7 @@ Before compressing it we have $x + k \cdot n$ total lines.
 When we compress it, we have a function which is $n$ lines long. You'll then call that function in $k$ places. In doing so you create $\delta$ lines of waste. So the total is $x + n + k + \delta$. The keen observers among you might have seen that this is turning a roughly $O(n \cdot k)$ into an $O(n + k)$. That would be correct but we're still no-where close the formula from before, so let's go on.
 
 We want the code to *decrease* in lines, or at least to stay the same, so we want
+
 $$
 \begin{align*}
 \text{lines of code before compression} &\geq \text{lines of code after compression} \\
@@ -85,6 +86,7 @@ Longer functions means calling them fewer times, while shorter functions means c
 
 What about single line functions?
 Well here's the problem, you will **always** increase the number of lines.
+
 $$
 \begin{align*}
 (n - 1)(k - 1) &\geq \delta + 1 \\
@@ -94,6 +96,7 @@ $$
 -1 &\geq \delta \\
 \end{align*}
 $$
+
 Which is impossible since we know $\delta \geq 0$. In fact in most languages it's actually greater than 1.
 
 So every time you have a function with 1 line of code, you are *increasing* the number of lines of the whole program. Maybe it's not such a good idea having many one-liners right?
