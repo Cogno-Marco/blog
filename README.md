@@ -4,6 +4,10 @@ Expect posts about coding, lessons, rants, gamedev and in general technical cont
 
 # Table of content
 
+> ## [The difference between High and Low level programming languages](/posts/high_vs_low_level.md)
+> ###### Or at least a better way to define them (2023/06/11)
+
+
 > ## [Code Compression Law](/posts/code_compression_law.md)
 > ###### Why one-liners are a bad idea (2023/02/04)
 
