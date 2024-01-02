@@ -1,8 +1,11 @@
 # Programming/Engineering blog
 Personal programming/engineering blog. (like the actual blog, not the source code. Yes this is a full blog.)
-Expect posts about coding, lessons, rants, gamedev and in general technical content.
+Expect posts about coding, lessons, rants, gamedev and technical content in general.
 
 # Table of content
+
+> ## [The REAL difference between Trait and Interfaces](/posts/trait_vs_interface.md)
+> ###### Or at least one difference (2024/01/02)
 
 > ## [The difference between High and Low level programming languages](/posts/high_vs_low_level.md)
 > ###### Or at least a better way to define them (2023/06/11)
